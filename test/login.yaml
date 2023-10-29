@@ -1,14 +1,18 @@
-appId: host.exp.Exponent // ← 今回は、expoのシミュレーター上でテストを事項するので、expo goのappIdを指定
+appId: host.exp.Exponent
 ---
 - launchApp
 - tapOn: "maestro"
 - tapOn: "メールアドレス"
-- inputText: "hoge@example.com"
+- inputText: ${email} 
 - tapOn: "パスワード"
-- inputText: "password"
+- inputText: ${password} 
 - tapOn: "return"
 - tapOn:
     id: "loginButton"    
-- tapOn: "あとで行う"
-- assertVisible: "hoge@example.comさんこんにちは"
+- runFlow:
+    when:
+      visible: "パスワードを保存" 
+    commands:
+        - tapOn: "パスワードを保存" 
+- assertVisible: "${email}さんこんにちは"
 - assertVisible: "ログアウト"

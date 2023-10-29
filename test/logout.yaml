@@ -2,5 +2,8 @@ appId: host.exp.Exponent
 ---
 - runFlow:
     file: "login.yaml"
+    env:
+        email: user@example.com
+        password: 123
 - tapOn: 'ログアウト'
 - assertVisible: "ログアウトしました。"
